@@ -90,7 +90,7 @@ gulp.task('lr', function() {
 gulp.task('watch', function() {
   gulp.watch(srcs.html, ['html']);
   gulp.watch(srcs.css, ['css']);
-  gulp.watch(srcs.js, ['jq']);
+  gulp.watch(srcs.jq, ['jq']);
   gulp.watch(srcs.js, ['js']);
   gulp.watch(srcs.img, ['img']);
   gulp.watch(srcs.pass, ['pass']);
