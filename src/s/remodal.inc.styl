@@ -1,0 +1,144 @@
+/*! Remodal - v0.1.4 - 2014-04-06
+ * https://github.com/VodkaBears/remodal
+ * Copyright (c) 2014 VodkaBears */
+
+/* ==========================================================================
+  Remodal necessary styles
+  ========================================================================== */
+
+/* Hide scroll bar */
+
+html.remodal_lock
+body.remodal_lock
+  overflow hidden
+
+/* Anti FOUC */
+
+.remodal
+[data-remodal-id]
+  visibility hidden
+
+/* Overlay necessary styles */
+
+.remodal-overlay
+  position fixed
+  top 0
+  left 0
+  right 0
+  bottom 0
+  z-index 10000
+
+  display none
+  overflow auto
+  -webkit-overflow-scrolling touch
+
+  text-align center
+
+.remodal-overlay:after
+  display inline-block
+  height 100%
+  // margin-left -0.05em
+
+  content ''
+
+/* Fix iPad, iPhone glitches */
+
+.remodal-overlay > *
+  -webkit-transform translateZ(0px)
+
+/* Modal dialog necessary styles */
+
+.remodal
+  position relative
+
+  display inline-block
+
+/* ==========================================================================
+  Remodal default theme
+  ========================================================================== */
+
+/* Background for effects */
+
+.remodal-bg
+  transition filter .35s .15s
+
+body.remodal_active .remodal-bg
+  filter blur(3px)
+
+/* Overlay default theme styles */
+
+.remodal-overlay
+  opacity 0
+  background rgba(black,.85)
+  transition opacity .35s .15s
+
+body.remodal_active .remodal-overlay
+  opacity 1
+
+/* Modal dialog default theme styles */
+
+.remodal
+  width 100%
+  min-height 100%
+  padding 40px
+
+  background white
+  box-shadow 0px 0px 8px black
+  transform scale(0.95)
+  transition transform .35s .15s
+
+  @media only screen and (min-width: 1001px)
+    max-width 795px
+    min-height 0
+    margin 20px auto
+
+    border-radius 10px
+
+body.remodal_active .remodal
+  transform scale(1)
+
+/* Modal dialog vertical align */
+
+.remodal
+.remodal-overlay:after
+  vertical-align middle
+
+/* Close button */
+
+.remodal-close
+  position absolute
+  top 8px
+  right 8px
+
+  width 32px
+  height 34px
+
+  background-image uri('../i/close-icon.png')
+  background-position center top
+
+  &:after
+    content ''
+
+    display inline-block
+
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+
+    background-image inherit
+    background-position center bottom
+    opacity 0
+
+    transition opacity .35s .15s
+
+  &:hover
+    &:after
+      opacity 1
+
+      transition none
+
+  @media only screen and (min-width: 1001px)
+    top -12px
+    right -12px

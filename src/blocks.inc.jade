@@ -32,7 +32,7 @@ mixin extra-thumbs(title, data)
           +merch-thumb(merch)
       div(elem = 'show-more')
         div(elem = 'show-more__button')
-          button(block = 'button', mod = 'size:medium, type:flat', href = '/popular.html') Показать ещё
+          button(block = 'button', mod = 'size:medium, type:flat') Показать ещё
 
 mixin footer()
   footer(block = 'footer')
@@ -111,7 +111,7 @@ mixin merch-thumb(data)
       img(elem = 'image', src != '/i/content/merch/' + data.href + '.jpg')
     a(elem = 'price', href != '#' + data.href) #{data.price} руб.
     div(elem = 'preview')
-      button(block = 'button', mod = 'size:small, type:main') Быстрый просмотр
+      button(block = 'button', mod = 'size:small, type:main', data-remodal-target = 'merch') Быстрый просмотр
 
 mixin search()
   input(block = 'input'

@@ -4,4 +4,6 @@ $(function() {
 
   });
 
+$('.bannerama').fotorama();
+$('.merchorama').fotorama();
 $('.js-collapser').collapser();

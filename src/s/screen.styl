@@ -17,8 +17,6 @@ white = rgb(255,255,235)
 html
   position relative
 
-  padding 0 40px
-
   background-color white
   background-image uri('/i/background.png')
 
@@ -53,6 +51,47 @@ a
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
+.author
+  color rgb(178,172,156)
+  color rgba(black,.5)
+
+.bannerama
+  .fotorama
+    &__nav
+      &__frame
+        opacity .5
+
+        transition .35s .15s
+
+        &.fotorama__active
+          opacity 1
+
+          transition none
+
+    &__stage
+      border-radius 5px
+
+    &__thumb
+      border-radius 5px
+
+    &__thumb-border
+      display none
+
+.breadcrumbs
+  color lighten(black,35%)
+  font-size 13px
+
+  &__item
+    display inline-block
+
+    &:not(:first-child)
+      &:before
+        content '›'
+
+        display inline-block
+
+        padding 0 5px 0 4px
+
 .button
   padding 2px 15px 1px
 
@@ -72,6 +111,81 @@ a
       text-transform uppercase
 
   &_type
+    &_bought
+      padding 8px 15px 12px
+
+      background-color white
+      background-image linear-gradient(to bottom, rgba(lighten(black,75%),.5), rgba(lighten(black,75%),0))
+      box-shadow inset 0 0 0 1px rgba(black,.15),
+                 inset 0 2px 2px rgba(black,.35),
+           inset 0 1px 3px rgba(darken(@background-color,75%),0)
+      cursor default
+
+      color rgb(178,172,156)
+      color rgba(black,.5)
+      font-size 24px
+      font-weight 400
+      letter-spacing 0
+      // line-height 30px
+      text-shadow 0 1px 0 rgba(255,255,255,.95)
+      text-transform none
+
+    &_buy
+      padding 8px 15px 12px
+
+      background-color purple
+      background-image linear-gradient(to bottom, rgba(lighten(@background-color,75%),.5), rgba(darken(@background-color,35%),.5))
+      box-shadow 0 0 0 1px rgba(darken(@background-color,60%),.5),
+                 0 2px 1px rgba(darken(@background-color,75%),.5),
+           inset 0 19px 0  rgba(255,255,255,.1),
+           inset 0 1px 3px rgba(darken(@background-color,75%),0)
+
+      color rgb(255,255,255)
+      font-size 24px
+      font-weight 400
+      letter-spacing 0
+      // line-height 30px
+      text-shadow 0 1px 0 rgba(darken(@background-color,75%),.7)
+      text-transform none
+
+      transition background-color .35s .15s, box-shadow .35s .15s
+
+      &:hover
+        background-color lighten(@background-color,20%)
+
+        transition none
+
+      &:focus
+        background-color darken(@background-color,20%)
+
+      &:active
+        background-color darken(@background-color,5%)
+        background-image linear-gradient(to top, rgba(lighten(@background-color,30%),.5), rgba(darken(@background-color,30%),.5))
+        box-shadow 0 0 0 1px rgba(darken(@background-color,60%),.5),
+                   0 2px 1px rgba(darken(@background-color,75%),0),
+             inset 0 -21px 0  rgba(255,255,255,.1),
+             inset 0 1px 3px rgba(darken(@background-color,75%),.35)
+
+    &_flat
+      background-color lightgreen
+      border 1px solid transparent
+
+      color white
+      text-shadow 0 -1px 0 rgba(darkgreen,.2)
+
+      transition background-color .35s .15s, border-color .35s .15s
+
+      &:hover
+        background-color lighten(@background-color,15%)
+
+        transition none
+
+      &:focus
+        border-color lighten(@background-color,15%)
+
+      &:active
+        background-color darken(@background-color,5%)
+
     &_main
       background-color yellow
       background-image linear-gradient(to bottom, rgba(lighten(@background-color,75%),.5), rgba(darken(@background-color,20%),.5))
@@ -100,25 +214,50 @@ a
 
         color darken(@background-color,80%)
 
-    &_flat
-      background-color lightgreen
-      border 1px solid transparent
+    &_secondary
+      background-color rgb(255,255,255)
+      background-image linear-gradient(to bottom, rgba(lighten(@background-color,75%),.5), rgba(darken(@background-color,20%),.25))
+      box-shadow 0 0 0 1px rgba(darken(@background-color,60%),.35),
+                 0 2px 1px rgba(darken(@background-color,75%),.25),
+           inset 0 1px 3px rgba(darken(@background-color,75%),0)
 
-      color white
-      text-shadow 0 -1px 0 rgba(darkgreen,.2)
+      font-size 14px
+      font-weight 400
+      letter-spacing 0
+      text-shadow 0 1px 0 rgba(lighten(@background-color,75%),.7)
+      text-transform none
 
-      transition background-color .35s .15s, border-color .35s .15s
+      transition color .35s .15s, box-shadow .35s .15s
 
       &:hover
-        background-color lighten(@background-color,15%)
+        background-color lighten(@background-color,50%)
+
+        color purple
 
         transition none
 
       &:focus
-        border-color lighten(@background-color,15%)
+        background-color white
 
       &:active
         background-color darken(@background-color,5%)
+        background-image linear-gradient(to top, rgba(lighten(@background-color,30%),.5), rgba(darken(@background-color,30%),.5))
+        box-shadow 0 0 0 1px rgba(darken(@background-color,60%),.5),
+                   0 2px 1px rgba(darken(@background-color,75%),0),
+             inset 0 1px 5px rgba(darken(@background-color,75%),.35)
+
+        color darken(@background-color,80%)
+
+  &_width
+    &_wide
+      width 100%
+
+.caption
+  color purple
+  font-size 14px
+  font-weight 700
+  letter-spacing .05em
+  text-transform uppercase
 
 .cart-widget
   padding 14px 15px 15px
@@ -286,9 +425,13 @@ a
   padding 0 40px
 
   &__article
-  &__fotorama
+  &__bannerama
   &__side-menu
     margin-bottom 40px
+
+  &__breadcrumbs
+    margin-top 1px
+    margin-bottom 10px
 
   &__popular
     margin 0 -40px
@@ -298,11 +441,7 @@ a
   margin-bottom 40px
 
   &__title
-    color purple
-    font-size 14px
-    font-weight 700
-    letter-spacing .05em
-    text-transform uppercase
+    @extend .caption
 
 .footer
   padding 40px
@@ -339,27 +478,6 @@ a
                 background-color @color
 
                 transition none
-
-.fotorama
-  &__nav
-    &__frame
-      opacity .5
-
-      transition .35s .15s
-
-      &.fotorama__active
-        opacity 1
-
-        transition none
-
-  &__stage
-    border-radius 5px
-
-  &__thumb
-    border-radius 5px
-
-  &__thumb-border
-    display none
 
 .header
   padding 25px 40px 0
@@ -429,6 +547,64 @@ a
       background-position 10px center, center center
       background-repeat no-repeat, repeat
       border-radius 16px
+
+.merch-card
+  &__article
+    margin-bottom 9px
+
+    font-size 18px
+    font-weight 700
+    line-height 25px
+
+  &__desc
+    font-size 13px
+
+  &__buttons
+  &__desc
+  &__options
+  &__price
+    margin-bottom 25px
+
+  &__price
+    color purple
+    font-size 48px
+    font-weight 700
+    line-height 45px
+
+  &__old-price
+    color rgb(178,172,156)
+    font-size 30px
+    line-height 45px
+    text-decoration line-through
+
+  &__title
+    margin-bottom 8px
+
+    color purple
+    font-size 24px
+    line-height 25px
+
+.merchorama
+  .fotorama
+    &__nav
+      &__frame
+        opacity .5
+
+        transition .35s .15s
+
+        &.fotorama__active
+          opacity 1
+
+          transition none
+
+    &__stage
+      border-radius 10px
+
+    &__thumb
+      border-radius 5px
+
+    &__thumb-border
+      display none
 
 .kinday
   position absolute
@@ -625,6 +801,60 @@ a
     text-align center
     text-shadow 0 -1px 0 rgba(darkgreen,.2)
 
+.radio
+  display block
+
+  font-size 13px
+
+  &__input
+    display none
+
+  &__label
+    display inline-block
+
+    margin 0 -5px
+    padding 0 5px
+
+    cursor pointer
+
+    color purple
+
+    transition background-color .35s .15s, color .35s .15s
+
+  &__input:checked + &__label
+    background-color yellow
+
+    color black
+
+    transition none
+
+  &__input:disabled + &__label
+    color rgb(178,172,156)
+    color rgba(black,.5)
+
+.rating
+  display inline-block
+
+  width 94px
+  height 21px
+  margin 0 10px
+
+  background-image uri('../i/ratings.png')
+  background-repeat no-repeat
+
+  vertical-align sub
+
+  &_equals
+    for n in 0..5
+      &_{n}
+        background-position center -(n * 21px)
+
+.review
+  padding 20px 0
+
+.reviews
+  padding 60px 0
+
 .rouble
   text-transform uppercase
 
@@ -755,6 +985,11 @@ a
 
     width 100%
 
+.title
+  color purple
+  font-size 48px
+  line-height 60px
+
 .ugc
   font-size 13px
 
@@ -765,3 +1000,5 @@ a
 
   p
     margin-bottom 1.5em
+
+@import 'remodal.inc'

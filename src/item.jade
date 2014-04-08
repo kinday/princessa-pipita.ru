@@ -1,0 +1,246 @@
+extends default.layout
+include blocks.inc.jade
+
+block content
+
+  +header()
+
+  div(block = 'content')
+    .row
+      .col1of5
+        div(elem = 'side-menu')
+          +side-menu([{
+            title: 'Коллекция 2014'
+            }, {
+            title: 'Для детей'
+            }, {
+            title: 'Для взрослых'
+            }, {
+            title: 'Аксессуары',
+            items: ['Для волос', 'Колготки', 'Накидки', 'Перчатки', 'Сумочки']
+            }, {
+            title: 'Бельё'
+            }])
+
+        div(elem = 'filters')
+          div(block = 'filter')
+            h6(elem = 'title') Сортировать по:
+            ul(block = 'options')
+              li: a(elem = 'item', href = '#') Названию
+              li: a(elem = 'item', mod = 'is:active, sort:asc', href = '#') Популярности
+              li: a(elem = 'item', href = '#') Стоимости
+
+          div(block = 'filter')
+            h6(elem = 'title') Производитель
+            ul(block = 'options')
+              li: a(elem = 'item', href = '#') Балеруа
+              li: a(elem = 'item', mod = 'is:active', href = '#') Принцельеза
+              li: a(elem = 'item', href = '#') Свадебный салон
+              li: a(elem = 'item', href = '#') Тириант
+
+      .col4of5
+        nav(elem = 'breadcrumbs')
+          ul(block = 'breadcrumbs')
+            li(elem = 'item'): a(href = '/') Магазин
+            li(elem = 'item') Аксессуары
+
+        .row(elem = 'merch-card')
+          .col1of2
+            div(block = 'merchorama',
+              data-width = '100%',
+              data-nav = 'thumbs',
+              data-fit = 'cover',
+              data-thumbwidth = '90',
+              data-thumbheight = '90',
+              data-thumbmargin = '10',
+              data-thumbborderwidth = '3',
+              data-click = 'false',
+              data-transition = 'dissolve')
+              img(src = '/i/content/merch/item-1.jpg')
+              img(src = '/i/content/merch/item-2.jpg')
+              img(src = '/i/content/merch/item-3.jpg')
+          .col1of2(block = 'merch-card')
+            h1(elem = 'title') Детское бальное платье
+            h3(elem = 'article')
+              | Арт. 051-36
+              span(elem = 'rating')
+                span(block = 'rating', mod = 'equals:3')
+            div(elem = 'desc')
+              p Модное детское платье в стиле ретро с кринолиновой юбкой средней длины сделает её обладательницу королевой вечера на любом празднике. Особенно платье подходит для Новогоднего бала.
+
+            .row(elem = 'options')
+              .col1of2
+                h6.caption Цвет
+                div(block = 'radio')
+                  input(elem = 'input', type = 'radio', id = 'color-blue', name = 'color')
+                  label(elem = 'label', for = 'color-blue') Голубой
+                div(block = 'radio')
+                  input(elem = 'input', type = 'radio', id = 'color-white', name = 'color')
+                  label(elem = 'label', for = 'color-white') Белый
+                div(block = 'radio')
+                  input(elem = 'input', type = 'radio', id = 'color-red', name = 'color')
+                  label(elem = 'label', for = 'color-red') Красный
+              .col1of2
+                h6.caption Размер
+                div(block = 'radio')
+                  input(elem = 'input', type = 'radio', id = 'size-30-32', name = 'size')
+                  label(elem = 'label', for = 'size-30-32') 30...32
+                div(block = 'radio')
+                  input(elem = 'input', type = 'radio', id = 'size-32-34', name = 'size')
+                  label(elem = 'label', for = 'size-32-34') 32...34
+                div(block = 'radio')
+                  input(elem = 'input', type = 'radio', id = 'size-36-38', name = 'size', disabled)
+                  label(elem = 'label', for = 'size-36-38') 36...38
+                div(block = 'radio')
+                  input(elem = 'input', type = 'radio', id = 'size-40-42', name = 'size')
+                  label(elem = 'label', for = 'size-40-42') 40...42
+
+            div(elem = 'old-price') 3100 руб.
+            div(elem = 'price') 2600 руб.
+            .row(elem = 'buttons')
+              .col1of2
+                button(block = 'button', mod = 'type:buy, size:medium, width:wide') Купить
+              .col1of2
+                button(block = 'button', mod = 'type:secondary, size:medium, width:wide') Отложить
+
+            div(elem = 'social')
+              h6.caption Расскажите друзьям
+              div(block = 'social')
+
+    +extra-thumbs('Похожие товары', [{
+      href: 'thumb-1',
+      price: 2800
+      }, {
+      href: 'thumb-2',
+      price: 3100
+      }, {
+      href: 'thumb-3',
+      price: 2600
+      }, {
+      href: 'thumb-1',
+      price: 3000
+      }, {
+      href: 'thumb-2',
+      price: 2450
+      }])
+
+    div(elem = 'reviews')
+      .row(block = 'reviews')
+        .col1of5
+        .col4of5
+          h3(block = 'title') Отзывы
+          div(elem = 'item')
+            article(block = 'review', mix = 'block:ugc')
+              header
+                h1
+                  | Потрясающая модель
+                  span(block = 'rating', mod = 'equals:5')
+                p(block = 'author') Ирина Мостовая, 26 лет
+              section
+                p Бихевиоризм традиционно вызывает классический кризис легитимности, утверждает руководитель аппарата Правительства. Политическое учение Фомы Аквинского, с другой стороны, однозначно сохраняет эмпирический референдум, говорится в докладе ОБСЕ. Н.А.Бердяев отмечает, что политическая модернизация категорически интегрирует эмпирический тоталитарный тип политической культуры, на что указывают и многие другие факторы.
+                p Правовое государство, в первом приближении, представляет собой политический процесс в современной России, что может привести к военно-политической и идеологической конфронтации с Японией. Коллапс Советского Союза однозначно символизирует англо-американский тип политической культуры, отмечает Г.Алмонд.
+          div(elem = 'item')
+            article(block = 'review', mix = 'block:ugc')
+              header
+                h1
+                  | Идеально для светского раута
+                  span(block = 'rating', mod = 'equals:4')
+                p(block = 'author') Анна Крюк, 31 год
+              section
+                p Между тем, управление политическими конфликтами отражает эмпирический коммунизм (отметим, что это особенно важно для гармонизации политических интересов и интеграции общества). Многопартийная система наблюдаема. Политический процесс в современной России, несмотря на внешние воздействия, традиционно формирует субъект власти, об этом прямо сказано в статье 2 Конституции РФ.
+                p Можно предположить, что многопартийная система верифицирует антропологический англо-американский тип политической культуры, такими словами завершается послание Федеральному Собранию.
+          div(elem = 'item')
+            article(block = 'review', mix = 'block:ugc')
+              header
+                h1
+                  | Идеальное на фото, ужасное в реальности
+                  span(block = 'rating', mod = 'equals:1')
+                p(block = 'author') Елена
+              section
+                p Между тем, управление политическими конфликтами отражает эмпирический коммунизм (отметим, что это особенно важно для гармонизации политических интересов и интеграции общества). Многопартийная система наблюдаема. Политический процесс в современной России.
+
+    +extra-thumbs('Вы смотрели', [{
+      href: 'thumb-1',
+      price: 2800
+      }, {
+      href: 'thumb-2',
+      price: 3100
+      }, {
+      href: 'thumb-3',
+      price: 2600
+      }, {
+      href: 'thumb-1',
+      price: 3000
+      }, {
+      href: 'thumb-2',
+      price: 2450
+      }])
+
+  +footer()
+
+  div(block = 'kinday')
+    a(elem = 'mark', href = '#')
+
+  div(block = 'remodal', data-remodal-id='merch')
+    .row
+      .col1of2
+        div(block = 'merchorama',
+          data-width = '100%',
+          data-nav = 'thumbs',
+          data-fit = 'cover',
+          data-thumbwidth = '90',
+          data-thumbheight = '90',
+          data-thumbmargin = '10',
+          data-thumbborderwidth = '3',
+          data-click = 'false',
+          data-transition = 'dissolve')
+          img(src = '/i/content/merch/item-1.jpg')
+          img(src = '/i/content/merch/item-2.jpg')
+          img(src = '/i/content/merch/item-3.jpg')
+      .col1of2(block = 'merch-card')
+        h1(elem = 'title') Детское бальное платье
+        h3(elem = 'article')
+          | Арт. 051-36
+          span(elem = 'rating')
+            span(block = 'rating', mod = 'equals:5')
+        div(elem = 'desc')
+          p Модное детское платье в стиле ретро с кринолиновой юбкой средней длины сделает её обладательницу королевой вечера на любом празднике. Особенно платье подходит для Новогоднего бала.
+
+        .row(elem = 'options')
+          .col1of2
+            h6.caption Цвет
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-color-blue', name = 'color')
+              label(elem = 'label', for = 'popup-color-blue') Голубой
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-color-white', name = 'color')
+              label(elem = 'label', for = 'popup-color-white') Белый
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-color-red', name = 'color')
+              label(elem = 'label', for = 'popup-color-red') Красный
+          .col1of2
+            h6.caption Размер
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-size-30-32', name = 'size')
+              label(elem = 'label', for = 'popup-size-30-32') 30...32
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-size-32-34', name = 'size')
+              label(elem = 'label', for = 'popup-size-32-34') 32...34
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-size-36-38', name = 'size', disabled)
+              label(elem = 'label', for = 'popup-size-36-38') 36...38
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-size-40-42', name = 'size')
+              label(elem = 'label', for = 'popup-size-40-42') 40...42
+
+        div(elem = 'old-price') 3100 руб.
+        div(elem = 'price') 2600 руб.
+        .row(elem = 'buttons')
+          .col1of2
+            button(block = 'button', mod = 'type:bought, size:medium, width:wide') В корзине
+          .col1of2
+            button(block = 'button', mod = 'type:secondary, size:medium, width:wide') Отложить
+
+        div(elem = 'social')
+          h6.caption Расскажите друзьям
+          div(block = 'social')
