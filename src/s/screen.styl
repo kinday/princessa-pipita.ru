@@ -287,10 +287,22 @@ a
 
   &__article
   &__fotorama
+  &__side-menu
     margin-bottom 40px
 
   &__popular
     margin 0 -40px
+
+
+.filter
+  margin-bottom 40px
+
+  &__title
+    color purple
+    font-size 14px
+    font-weight 700
+    letter-spacing .05em
+    text-transform uppercase
 
 .footer
   padding 40px
@@ -474,6 +486,7 @@ a
   width 175px
 
   cursor pointer
+  overflow hidden
 
   text-align center
 
@@ -483,7 +496,7 @@ a
     border 3px solid rgb(255,255,255)
     box-shadow 0 1px 0 rgba(darkgreen,.2)
 
-    transition box-shadow .35s .15s
+    transition border-color .35s .15s
 
   &__price
     display inline-block
@@ -504,19 +517,60 @@ a
 
     transition box-shadow .35s .15s, color .35s .15s
 
-    &.hover
-    &:hover
-      box-shadow 0 5px 10px rgba(darkgreen,.35),
-                 0 1px 1px rgba(darkgreen,.5)
+  &__preview
+    position absolute
+    top -100px
+    right 0
+    left 0
 
-      color darkgreen
+    opacity 0
 
-      transition none
+    transition opacity .35s, top .35s .15s
 
+  &.hover &__image
   &:hover &__image
-    box-shadow 0 5px 10px rgba(darkgreen,.2)
+    border-color yellow
 
     transition none
+
+  &.hover &__preview
+  &:hover &__preview
+    top 40%
+
+    opacity 1
+
+    transition none
+
+.options
+  color purple
+  font-size 13px
+
+  &__item
+    display inline-block
+
+    margin 0 -5px
+    padding 0 5px
+
+    text-decoration none
+
+    &_is
+      &_active
+        background-color yellow
+        color black
+
+    &_sort
+      &_asc
+      &_desc
+        padding-right 18px
+
+        background-image uri('../i/sort-icon.gif')
+        background-repeat no-repeat
+
+      &_asc
+        background-position right top
+
+      &_desc
+        background-position right bottom
 
 .popular
   padding 30px 40px
@@ -588,24 +642,42 @@ a
     display none
 
 .side-menu
+  color darken(purple,15%)
+
   &__item
     padding-bottom 1px
 
-    color darken(purple,15%)
     font-size 16px
     font-weight 700
     text-decoration underline
+
+    &_is
+      &_active
+        margin-left -40px
+        padding 5px 0 6px
+        padding-left 40px
+
+        background-image url('../i/side-menu__item_is_active.png')
+        background-position right center
+        background-repeat no-repeat
+
+        color darken(purple,15%)
 
   &__link
     text-decoration inherit
 
   &__subitem
+    color black
     font-size 13px
     text-decoration none
 
   &__item + &__item
   &__subitem + &__item
     margin-top 25px
+
+  &_internal
+    &_true
+      color black
 
 .site-menu
   margin-bottom -14px

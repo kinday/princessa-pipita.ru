@@ -1,1 +1,2 @@
 - Fotorama inner shadow for image and thumbs.
+- Range sliders in filters.

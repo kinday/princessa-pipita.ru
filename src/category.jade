@@ -7,26 +7,101 @@ block content
 
   div(block = 'content')
     .row
-      .col1of5(elem = 'side-menu')
-        +side-menu()
+      .col1of5
+        div(elem = 'side-menu')
+          +side-menu([{
+            title: 'Коллекция 2014'
+            }, {
+            title: 'Для детей'
+            }, {
+            title: 'Для взрослых'
+            }, {
+            title: 'Аксессуары',
+            items: ['Для волос', 'Колготки', 'Накидки', 'Перчатки', 'Сумочки']
+            }, {
+            title: 'Бельё'
+            }])
+
+        div(elem = 'filters')
+          div(block = 'filter')
+            h6(elem = 'title') Сортировать по:
+            ul(block = 'options')
+              li: a(elem = 'item', href = '#') Названию
+              li: a(elem = 'item', mod = 'is:active, sort:asc', href = '#') Популярности
+              li: a(elem = 'item', href = '#') Стоимости
+
+          div(block = 'filter')
+            h6(elem = 'title') Производитель
+            ul(block = 'options')
+              li: a(elem = 'item', href = '#') Балеруа
+              li: a(elem = 'item', mod = 'is:active', href = '#') Принцельеза
+              li: a(elem = 'item', href = '#') Свадебный салон
+              li: a(elem = 'item', href = '#') Тириант
 
       .col4of5
-        div(elem = 'fotorama')
-          div(block = 'fotorama',
-              data-width = '100%',
-              data-height = '400',
-              data-nav = 'thumbs',
-              data-thumbwidth = '70',
-              data-thumbheight = '39',
-              data-thumbmargin = '10',
-              data-thumbborderwidth = '1',
-              data-arrows = 'false',
-              data-click = 'false',
-              data-transition = 'dissolve')
-            div(elem = 'banner', data-img = '/i/content/banner-1.jpg')
-              a(elem = 'click')
-            div(elem = 'banner', data-img = '/i/content/banner-1.jpg')
-              a(elem = 'click')
+        +merch-matrix([{
+          href: 'thumb-1',
+          price: 2800
+          }, {
+          href: 'thumb-2',
+          price: 3100
+          }, {
+          href: 'thumb-3',
+          price: 2600
+          }, {
+          href: 'thumb-1',
+          price: 3000
+          }, {
+          href: 'thumb-2',
+          price: 2450
+          }, {
+          href: 'thumb-1',
+          price: 2800
+          }, {
+          href: 'thumb-2',
+          price: 3100
+          }, {
+          href: 'thumb-3',
+          price: 2600
+          }, {
+          href: 'thumb-1',
+          price: 3000
+          }, {
+          href: 'thumb-2',
+          price: 2450
+          }, {
+          href: 'thumb-1',
+          price: 2800
+          }, {
+          href: 'thumb-2',
+          price: 3100
+          }, {
+          href: 'thumb-3',
+          price: 2600
+          }, {
+          href: 'thumb-1',
+          price: 3000
+          }, {
+          href: 'thumb-2',
+          price: 2450
+          }, {
+          href: 'thumb-1',
+          price: 2800
+          }, {
+          href: 'thumb-2',
+          price: 3100
+          }, {
+          href: 'thumb-3',
+          price: 2600
+          }, {
+          href: 'thumb-1',
+          price: 3000
+          }, {
+          href: 'thumb-2',
+          price: 2450
+          }])
+        nav(block = 'pagination')
+
 
         div(elem = 'article')
           article.js-collapser(block = 'ugc')
@@ -37,7 +112,7 @@ block content
               p Коллективное бессознательное конфронтально представляет собой ускоряющийся гомеостаз, таким образом осуществляется своего рода связь с темнотой бессознательного. Однако Э. Дюркгейм утверждал, что стресс иллюстрирует интеракционизм, это обозначено Ли Россом как фундаментальная ошибка атрибуции, которая прослеживается во многих экспериментах. Стимул изящно отчуждает когнитивный инсайт, Гоббс одним из первых осветил эту проблему с позиций психологии. Субъект неизменяем. Воспитание начинает экспериментальный бихевиоризм, тем не менее как только ортодоксальность окончательно возобладает, даже эта маленькая лазейка будет закрыта.
               p Сновидение постоянно. Роль спонтанно начинает эгоцентризм, о чем и писал А.Маслоу в своей работе "Мотивация и личность". Коллективное бессознательное, как справедливо считает Ф.Энгельс, отталкивает инсайт в силу которого смешивает субъективное и объективное, переносит свои внутренние побуждения на реальные связи вещей. С феноменологической точки зрения, ригидность просветляет индивидуальный кризис, к тому же этот вопрос касается чего-то слишком общего.
 
-    +extra-thumbs('Популярные товары', [{
+    +extra-thumbs('Вы смотрели', [{
       href: 'thumb-1',
       price: 2800
       }, {
