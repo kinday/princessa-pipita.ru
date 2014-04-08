@@ -23,6 +23,17 @@ mixin catalog-menu()
       li(elem = 'item'): a(elem = 'link', href = '#') Бельё
       li(elem = 'item'): a(elem = 'link', href = '#') Скидки
 
+mixin extra-thumbs(title, data)
+  div(elem = 'popular')
+    div(block = 'popular')
+      h3(elem = 'title')= title
+      div(elem = 'thumbs')
+        - for merch in data
+          +merch-thumb(merch)
+      div(elem = 'show-more')
+        div(elem = 'show-more__button')
+          button(block = 'button', mod = 'size:medium, type:flat', href = '/popular.html') Показать ещё
+
 mixin footer()
   footer(block = 'footer')
     .row
@@ -90,34 +101,17 @@ mixin header()
 
     +catalog-menu()
 
-mixin popular()
-  div(elem = 'popular')
-    div(block = 'popular')
-      h3(elem = 'title') Популярные товары
-      div(elem = 'thumbs')
-        div(block = 'merch-thumb')
-          a(href = '#1')
-            img(elem = 'image', src = '/i/content/merch/thumb-1.jpg')
-          a(elem = 'price', href = '#1') 2&thinsp;800 руб.
-        div(block = 'merch-thumb')
-          a(href = '#2')
-            img(elem = 'image', src = '/i/content/merch/thumb-2.jpg')
-          a(elem = 'price', href = '#2') 3&thinsp;100 руб.
-        div(block = 'merch-thumb')
-          a(href = '#3')
-            img(elem = 'image', src = '/i/content/merch/thumb-3.jpg')
-          a(elem = 'price', href = '#3') 2&thinsp;600 руб.
-        div(block = 'merch-thumb')
-          a(href = '#4')
-            img(elem = 'image', src = '/i/content/merch/thumb-1.jpg')
-          a(elem = 'price', href = '#4') 3&thinsp;000 руб.
-        div(block = 'merch-thumb')
-          a(href = '#5')
-            img(elem = 'image', src = '/i/content/merch/thumb-1.jpg')
-          a(elem = 'price', href = '#5') 2&thinsp;450 руб.
-      div(elem = 'show-more')
-        div(elem = 'show-more__button')
-          button(block = 'button', mod = 'size:medium, type:flat', href = '/popular.html') Показать ещё
+mixin merch-matrix(data)
+  - for merch in data
+    +merch-thumb(merch)
+
+mixin merch-thumb(data)
+  div(block = 'merch-thumb')
+    a(href != '#' + data.href)
+      img(elem = 'image', src != '/i/content/merch/' + data.href + '.jpg')
+    a(elem = 'price', href != '#' + data.href) #{data.price} руб.
+    div(elem = 'preview')
+      button(block = 'button', mod = 'size:small, type:main') Быстрый просмотр
 
 mixin search()
   input(block = 'input'
@@ -126,32 +120,43 @@ mixin search()
         type = 'text',
         placeholder = 'Поиск среди 1 283 товаров')
 
-mixin side-menu()
-  dl(block = 'side-menu')
-    dt(elem = 'item'): a(elem = 'link', href = '#') Коллекция 2014
+mixin side-menu(data)
+  - if(data)
+    dl(block = 'side-menu', mod = 'internal:true')
+      - for group in data
+        - if(group.items)
+          dt(elem = 'item', mod = 'is:active'): a(elem = 'link', href = '#')= group.title
+            - for item in group.items
+              dd(elem = 'subitem'): a(elem = 'link', href = '#')= item
+        - else
+          dt(elem = 'item'): a(elem = 'link', href = '#')= group.title
 
-    dt(elem = 'item'): a(elem = 'link', href = '#') Для детей
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') 1...4 года
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') 3...9 лет
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') 6...10 лет
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') 8...12 лет
+  - else
+    dl(block = 'side-menu')
+      dt(elem = 'item'): a(elem = 'link', href = '#') Коллекция 2014
 
-    dt(elem = 'item'): a(elem = 'link', href = '#') Для взрослых
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Вечерние платья
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Выпускные
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Свадебные
+      dt(elem = 'item'): a(elem = 'link', href = '#') Для детей
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') 1...4 года
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') 3...9 лет
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') 6...10 лет
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') 8...12 лет
 
-    dt(elem = 'item'): a(elem = 'link', href = '#') Аксессуары
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Для волос
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Колготки
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Накидки
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Перчатки
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Сумочки
+      dt(elem = 'item'): a(elem = 'link', href = '#') Для взрослых
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Вечерние платья
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Выпускные
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Свадебные
 
-    dt(elem = 'item'): a(elem = 'link', href = '#') Бельё
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Бюстгалтеры
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Трусики
-    dd(elem = 'subitem'): a(elem = 'link', href = '#') Чулки
+      dt(elem = 'item'): a(elem = 'link', href = '#') Аксессуары
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Для волос
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Колготки
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Накидки
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Перчатки
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Сумочки
+
+      dt(elem = 'item'): a(elem = 'link', href = '#') Бельё
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Бюстгалтеры
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Трусики
+      dd(elem = 'subitem'): a(elem = 'link', href = '#') Чулки
 
 mixin site-menu()
   ul(block = 'site-menu')
