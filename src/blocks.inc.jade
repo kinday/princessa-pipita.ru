@@ -1,0 +1,172 @@
+mixin cart-widget()
+  div(block = 'cart-widget', mix = 'block:header, elem:cart-widget')
+    a(elem = 'link', mod = 'icon:login', href = '#') Вход с паролем
+    a(elem = 'link', mod = 'icon:cart', href = '#')
+      | Корзина: 
+      span.js-cart-total 12&thinsp;000
+      | &thinsp;
+      span(block = 'rouble') р<span>уб.</span>
+    a(elem = 'link', mod = 'icon:faves', href = '#')
+      | Корзина: 
+      span.js-favs 7
+      |  товаров
+
+mixin catalog-menu()
+  nav(elem = 'catalog-menu')
+    ul(block = 'catalog-menu')
+      li(elem = 'item'): a(elem = 'link', href = '#') Детям
+      li(elem = 'item'): a(elem = 'link', href = '#') Взрослым
+      li(elem = 'item'): a(elem = 'link', href = '#') Выпускницам
+      li(elem = 'item'): a(elem = 'link', href = '#') Невестам
+      li.is-active(elem = 'item'): span(elem = 'link') Аксессуары
+      li(elem = 'item'): a(elem = 'link', href = '#') Косметика
+      li(elem = 'item'): a(elem = 'link', href = '#') Бельё
+      li(elem = 'item'): a(elem = 'link', href = '#') Скидки
+
+mixin footer()
+  footer(block = 'footer')
+    .row
+      .col1of4
+        dl(block = 'linkdump', mod = 'type:list')
+          dt(elem = 'title'): a(href = '#') Каталог
+          dd(elem = 'item'): a(href = '#') Детям
+          dd(elem = 'item'): a(href = '#') Взрослым
+          dd(elem = 'item'): a(href = '#') Выпускницам
+          dd(elem = 'item'): a(href = '#') Невестам
+          dd(elem = 'item'): a(href = '#') Аксессуары
+          dd(elem = 'item'): a(href = '#') Косметика
+          dd(elem = 'item'): a(href = '#') Бельё
+      .col1of4
+        dl(block = 'linkdump', mod = 'type:list')
+          dt(elem = 'title') Информация
+          dd(elem = 'item'): a(href = '#') Новости
+          dd(elem = 'item'): a(href = '#') Блог
+          dd(elem = 'item'): a(href = '#') Таблица размеров
+          dd(elem = 'item'): a(href = '#') Доставка
+          dd(elem = 'item'): a(href = '#') Оплата
+      .col1of4
+        dl(block = 'linkdump', mod = 'type:list')
+          dt(elem = 'title') Покупателям
+          dd(elem = 'item'): a(href = '#') Регистрация
+          dd(elem = 'item'): a(href = '#') Вход
+          dd(elem = 'item'): a(href = '#') Проверка заказа
+          dd(elem = 'item'): a(href = '#') Поддержка
+      .col1of4
+        dl(block = 'linkdump', mod = 'type:plain')
+          dt(elem = 'title'): a(href = '#') Контакты
+          dt(elem = 'subtitle') Телефоны:
+          dd(elem = 'item') (+7 499) 502 61 27
+          dd(elem = 'item') (+7 915) 236 34 49
+          dt(elem = 'subtitle') Эл. почта:
+          dd(elem = 'item'): a(href = '#') info@princessa-pipita.ru
+          dt(elem = 'subtitle') Адрес:
+          dd(elem = 'item'): a(href = '#')
+            | ул. Воронежская, д. 38 / 43, <br/>г. Москва, 115597
+            i(block = 'icon', mod = 'type:map')
+        br
+        br
+        p © 2014, «Принцесса Пипита»
+
+mixin header()
+  header(block = 'header')
+    .row(elem = 'site-info')
+      .col1of5.v
+        a(block = 'logotype', mix = 'block:header, elem:logotype', href = '/')
+      .col3of5.v
+        .row(block = 'contacts')
+          .col1of3.h.v
+            span +7 499 <b>502 61 27</b>
+          .col1of3.h.v
+            span +7 915 <b>236 34 49</b>
+          .col1of3.h.v
+            button(block = 'button', mod = 'size:small, type:main', mix = 'block:contacts, elem:button') Заказать звонок
+      .col1of5.v
+        +cart-widget()
+    nav.row(elem = 'site-menu')
+      .col3of7
+        +search()
+      .col4of7
+        +site-menu()
+
+    +catalog-menu()
+
+mixin popular()
+  div(elem = 'popular')
+    div(block = 'popular')
+      h3(elem = 'title') Популярные товары
+      div(elem = 'thumbs')
+        div(block = 'merch-thumb')
+          a(href = '#1')
+            img(elem = 'image', src = '/i/content/merch/thumb-1.jpg')
+          a(elem = 'price', href = '#1') 2&thinsp;800 руб.
+        div(block = 'merch-thumb')
+          a(href = '#2')
+            img(elem = 'image', src = '/i/content/merch/thumb-2.jpg')
+          a(elem = 'price', href = '#2') 3&thinsp;100 руб.
+        div(block = 'merch-thumb')
+          a(href = '#3')
+            img(elem = 'image', src = '/i/content/merch/thumb-3.jpg')
+          a(elem = 'price', href = '#3') 2&thinsp;600 руб.
+        div(block = 'merch-thumb')
+          a(href = '#4')
+            img(elem = 'image', src = '/i/content/merch/thumb-1.jpg')
+          a(elem = 'price', href = '#4') 3&thinsp;000 руб.
+        div(block = 'merch-thumb')
+          a(href = '#5')
+            img(elem = 'image', src = '/i/content/merch/thumb-1.jpg')
+          a(elem = 'price', href = '#5') 2&thinsp;450 руб.
+      div(elem = 'show-more')
+        div(elem = 'show-more__button')
+          button(block = 'button', mod = 'size:medium, type:flat', href = '/popular.html') Показать ещё
+
+mixin search()
+  input(block = 'input'
+        mod = 'type:search'
+        mix = 'block:site-nav, elem:search'
+        type = 'text',
+        placeholder = 'Поиск среди 1 283 товаров')
+
+mixin side-menu()
+  dl(block = 'side-menu')
+    dt(elem = 'item'): a(elem = 'link', href = '#') Коллекция 2014
+
+    dt(elem = 'item'): a(elem = 'link', href = '#') Для детей
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') 1...4 года
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') 3...9 лет
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') 6...10 лет
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') 8...12 лет
+
+    dt(elem = 'item'): a(elem = 'link', href = '#') Для взрослых
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Вечерние платья
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Выпускные
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Свадебные
+
+    dt(elem = 'item'): a(elem = 'link', href = '#') Аксессуары
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Для волос
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Колготки
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Накидки
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Перчатки
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Сумочки
+
+    dt(elem = 'item'): a(elem = 'link', href = '#') Бельё
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Бюстгалтеры
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Трусики
+    dd(elem = 'subitem'): a(elem = 'link', href = '#') Чулки
+
+mixin site-menu()
+  ul(block = 'site-menu')
+    li(elem = 'item')
+      a(elem = 'icon', mod = 'type:news', href = '/news.html')
+      a(elem = 'link', href = '/news.html') Новости
+    li(elem = 'item')
+      a(elem = 'icon', mod = 'type:sizes', href = '/sizes.html')
+      a(elem = 'link', href = '/sizes.html') Размеры
+    li(elem = 'item')
+      a(elem = 'icon', mod = 'type:delivery', href = '/delivery.html')
+      a(elem = 'link', href = '/delivery.html') Доставка
+    li(elem = 'item')
+      a(elem = 'icon', mod = 'type:payments', href = '/payments.html')
+      a(elem = 'link', href = '/payments.html') Оплата
+    li(elem = 'item')
+      a(elem = 'icon', mod = 'type:contacts', href = '/contacts.html')
+      a(elem = 'link', href = '/contacts.html') Контакты

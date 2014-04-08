@@ -1,0 +1,1 @@
+- Fotorama inner shadow for image and thumbs.

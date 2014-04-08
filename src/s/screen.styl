@@ -1,0 +1,695 @@
+black = rgb(42,42,40)
+lightgreen = rgb(16,203,153)
+green = rgb(21,172,131)
+darkgreen = rgb(11,76,67)
+purple = rgb(177,15,154)
+yellow = rgb(255,215,59)
+white = rgb(255,255,235)
+
+@import 'reset.inc'
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Tag-based styles
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+html
+  position relative
+
+  padding 0 40px
+
+  background-color white
+  background-image uri('/i/background.png')
+
+body
+  min-width 1000px
+  max-width 1000px
+  margin 0 auto 110px
+
+  background-color white
+  background-image linear-gradient(to bottom, rgba(black,.1) 0%, rgba(black,0) 50%)
+  border 1px solid darkgreen
+  border 0 solid rgba(darkgreen,0)
+  border-top none
+  border-radius 0 0 10px 10px
+  box-shadow 0 0 2px rgba(darkgreen,.35), 0 0 10px rgba(darkgreen,.5)
+
+  font 400 14px/20px 'Open Sans', Helvetica, Arial, sans-serif
+
+a
+  &.hover
+  &:hover
+    color purple
+
+  &:active
+    color lighten(purple,25%)
+
+@import 'grid.inc'
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Class-based blocks
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+.button
+  padding 2px 15px 1px
+
+  border-radius 5px
+  cursor pointer
+
+  font-size 12px
+  text-decoration none
+
+  &_size
+    &_medium
+      padding 10px 15px
+
+      font-size 14px
+      font-weight 700
+      letter-spacing .05em
+      text-transform uppercase
+
+  &_type
+    &_main
+      background-color yellow
+      background-image linear-gradient(to bottom, rgba(lighten(@background-color,75%),.5), rgba(darken(@background-color,20%),.5))
+      box-shadow 0 0 0 1px rgba(darken(@background-color,60%),.35),
+                 0 2px 1px rgba(darken(@background-color,75%),.25),
+           inset 0 1px 3px rgba(darken(@background-color,75%),0)
+
+      text-shadow 0 1px 0 rgba(lighten(@background-color,75%),.7)
+
+      transition background-color .35s .15s, box-shadow .35s .15s
+
+      &:hover
+        background-color lighten(@background-color,50%)
+
+        transition none
+
+      &:focus
+        background-color white
+
+      &:active
+        background-color darken(@background-color,5%)
+        background-image linear-gradient(to top, rgba(lighten(@background-color,30%),.5), rgba(darken(@background-color,30%),.5))
+        box-shadow 0 0 0 1px rgba(darken(@background-color,60%),.5),
+                   0 2px 1px rgba(darken(@background-color,75%),0),
+             inset 0 1px 5px rgba(darken(@background-color,75%),.35)
+
+        color darken(@background-color,80%)
+
+    &_flat
+      background-color lightgreen
+      border 1px solid transparent
+
+      color white
+      text-shadow 0 -1px 0 rgba(darkgreen,.2)
+
+      transition background-color .35s .15s, border-color .35s .15s
+
+      &:hover
+        background-color lighten(@background-color,15%)
+
+        transition none
+
+      &:focus
+        border-color lighten(@background-color,15%)
+
+      &:active
+        background-color darken(@background-color,5%)
+
+.cart-widget
+  padding 14px 15px 15px
+
+  background-color green
+  background-image linear-gradient(to bottom, rgba(lighten(@background-color,50%),.15), rgba(darken(@background-color,50%),.15))
+  border-radius 10px
+  box-shadow 0 0 0 1px rgba(darken(@background-color,75%),.35),
+             0 2px 1px rgba(darken(@background-color,75%),.35)
+
+  color white
+  font-size 13px
+  text-shadow 0 1px 0 rgba(darken(@background-color,75%),.25)
+
+  &__link
+    display block
+
+    padding 2px 0
+
+    &:hover
+      color rgb(255,255,255)
+
+    &_icon
+      &_cart
+      &_faves
+      &_login
+        padding-left 21px
+
+        background-position left center
+        background-repeat no-repeat
+
+      &_cart
+        background-image uri('../i/cart-icon.png')
+
+      &_faves
+        background-image uri('../i/faves-icon.png')
+
+      &_login
+        background-image uri('../i/login-icon.png')
+
+.catalog-menu
+  background-color yellow
+  box-shadow 0 1px 0   rgba(darkgreen,.15),
+             0 1px 2px rgba(darkgreen,.25)
+  overflow hidden
+
+  font-size 0
+  text-align center
+
+  &__item
+    display inline-block
+
+    background-image linear-gradient(to left, rgba(lighten(@background-color,50%),.15), rgba(darken(@background-color,35%),.15))
+    box-shadow 1px 0 2px rgba(darkgreen,.15),
+         inset 2px 0 2px -1px rgba(darkgreen,.15)
+
+    color black
+    font-size 14px
+    font-weight 700
+    letter-spacing .05em
+    vertical-align middle
+    text-transform uppercase
+
+    transform skew(-12.5deg)
+    transition background-color .35s .15s, color .35s .15s
+
+    &:hover
+      transition none
+
+    &.is-active
+    &.is-active:hover
+      background lighten(white,25%)
+      box-shadow 1px 0 2px rgba(darkgreen,.15),
+           inset 2px 0 2px -1px rgba(darkgreen,.25)
+
+      color purple
+
+  &__link
+    display inline-block
+
+    padding 12px 15px 10px
+
+    text-decoration none
+    text-shadow 0 1px 0 rgba(lighten(@background-color,50%),.5)
+
+    transform skew(12.5deg)
+
+    &:hover
+      color purple
+
+.collapser
+  position relative
+
+  max-height 9999px
+
+  overflow hidden
+
+  transition .35s
+
+  &:after
+    content ''
+
+    display block
+
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    z-index 10
+
+    background-image linear-gradient(to bottom, rgba(white,0), rgba(white,1))
+    opacity 0
+
+    transition opacity .35s
+
+  & > :first-child
+    padding-left 40px
+
+    transition padding-left .35s
+
+  &.is-collapsed
+    max-height 200px
+
+    &:after
+      opacity 1
+
+    & > :first-child
+      padding-left 0
+
+  &__switch
+    position absolute
+    top 182px
+    left 0
+    z-index 100
+
+    width 26px
+    height 18px
+
+    background-color green
+    background-image uri('../i/collapser-icons.png')
+    background-position center top
+    background-repeat no-repeat
+    border-radius 5px
+    box-shadow inset 0 0 1px rgba(black,.15),
+               inset 0 1px 1px rgba(black,.15)
+    cursor pointer
+
+    transition background-position .35s, top .35s
+
+    &.is-active
+      top 4px
+
+      background-position center bottom
+
+.contacts
+  color darken(green,35%)
+
+  font-size 14px
+
+  &__button
+    margin 0 5px
+
+.content
+  padding 0 40px
+
+  &__article
+  &__fotorama
+    margin-bottom 40px
+
+  &__popular
+    margin 0 -40px
+
+.footer
+  padding 40px
+
+  background-color black
+  border-radius 0 0 10px 10px
+
+  color rgb(115,114,107)
+  font-size 13px
+
+  a
+    text-decoration none
+
+    &:hover
+      color yellow
+
+      transition none
+
+  &:hover
+    a
+      color rgb(194,188,168)
+
+      .icon
+        &_type
+          &_map
+            background-color @color
+
+      &:hover
+        color rgb(255,255,255)
+
+        .icon
+            &_type
+              &_map
+                background-color @color
+
+                transition none
+
+.fotorama
+  &__nav
+    &__frame
+      opacity .5
+
+      transition .35s .15s
+
+      &.fotorama__active
+        opacity 1
+
+        transition none
+
+  &__stage
+    border-radius 5px
+
+  &__thumb
+    border-radius 5px
+
+  &__thumb-border
+    display none
+
+.header
+  padding 25px 40px 0
+
+  &__cart-widget
+    margin 0 -20px 0 0
+
+  &__catalog-menu
+    margin 0 -41px 30px
+
+  &__logotype
+    margin 5px 5px 10px -12px
+
+  &__site-info
+    margin-bottom 25px
+
+  &__site-menu
+    margin-bottom 20px
+
+.icon
+  display inline-block
+
+  &_type
+    &_map
+      margin-left .5em
+
+      width 16px
+      height 16px
+
+      background-color rgb(115,114,107)
+      background-image uri('../i/map-icon.png')
+      background-position center center
+
+      vertical-align middle
+
+      transition background-color .35s .15s
+
+.input
+  padding 6px 10px
+
+  background-color white
+  background-image linear-gradient(to bottom, rgba(darken(@background-color,95%),.075), rgba(darken(@background-color,25%),0))
+  border-radius 5px
+  box-shadow inset 0 0 0 1px rgba(darken(@background-color,95%),.15),
+             inset 0 1px 3px rgba(darken(purple,95%),.35),
+                   0 0 10px rgba(lighten(purple,50%),0)
+
+  transition background-color .35s .15s, box-shadow .35s .15s
+
+  &:focus
+    background-color lighten(white,50%)
+    box-shadow inset 0 0 0 1px rgba(darken(@background-color,95%),.25),
+               inset 0 1px 3px rgba(darken(purple,95%),.35),
+                     0 0 15px rgba(yellow,.5)
+
+    transition none
+
+  &_type
+    &_search
+      display block
+
+      width 100%
+      padding 5px 10px 5px 30px
+
+      background-image url('/i/search-icon.png') no-repeat 5px center
+      background-image uri('../i/search-icon.png'), linear-gradient(to bottom, rgba(darken(@background-color,95%),.075), rgba(darken(@background-color,25%),0))
+      background-position 10px center, center center
+      background-repeat no-repeat, repeat
+      border-radius 16px
+
+.kinday
+  position absolute
+  right 0
+  bottom 0
+  left 0
+
+  height 110px
+
+  text-align center
+
+  &__mark
+    display block
+
+    width 37px
+    height 45px
+    margin 32px auto
+
+    background-image uri('/i/kinday.png')
+    background-position center center
+    background-repeat no-repeat
+
+.linkdump
+  &_type_list &__item
+    background-image uri('/i/footer-bullit.gif')
+    background-position 3px 11px
+    background-repeat no-repeat
+
+  &__title
+    font-size 14px
+    letter-spacing .05em
+    text-transform uppercase
+
+  &__item
+    padding-left 10px
+
+.logotype
+  display inline-block
+
+  width 187px
+  height 77px
+
+  background-image uri('/i/logotype.png')
+  background-position center top
+  background-repeat no-repeat
+
+  &:hover
+    background-position center bottom
+
+.merch-thumb
+  display inline-block
+
+  position relative
+
+  width 175px
+
+  cursor pointer
+
+  text-align center
+
+  transition top .35s .15s
+
+  &__image
+    border 3px solid rgb(255,255,255)
+    box-shadow 0 1px 0 rgba(darkgreen,.2)
+
+    transition box-shadow .35s .15s
+
+  &__price
+    display inline-block
+
+    position relative
+    top -23px
+
+    padding 7px 10px
+
+    background-color rgb(255,255,255)
+    box-shadow 0 0 1px rgba(darkgreen,.35),
+               0 1px 1px rgba(darkgreen,.5)
+
+    font-size 18px
+    font-weight 700
+    letter-spacing .05em
+    text-decoration none
+
+    transition box-shadow .35s .15s, color .35s .15s
+
+    &.hover
+    &:hover
+      box-shadow 0 5px 10px rgba(darkgreen,.35),
+                 0 1px 1px rgba(darkgreen,.5)
+
+      color darkgreen
+
+      transition none
+
+  &:hover &__image
+    box-shadow 0 5px 10px rgba(darkgreen,.2)
+
+    transition none
+
+.popular
+  padding 30px 40px
+
+  background-color green
+
+  &__show-more
+    background-image uri('/i/show-more__background.png')
+    background-position left center
+    background-repeat repeat-x
+
+    text-align right
+
+  &__show-more__button
+    display inline-block
+
+    position relative
+
+    padding 0 57px 0 15px
+
+    background-color green
+
+    &:after
+      content ''
+
+      position absolute
+      top 0
+      right 0
+      bottom 0
+
+      width 39px
+
+      background-image uri('/i/show-more__arrow.png')
+      background-position right center
+      background-repeat no-repeat
+
+  &__thumbs
+    text-align justify
+
+    &:after
+      content ''
+
+      display inline-block
+
+      width 100%
+
+  &__title
+    margin-bottom 20px
+
+    color white
+    font 400 72px/80px 'Corinthia', Times, Georgia, serif
+    text-align center
+    text-shadow 0 -1px 0 rgba(darkgreen,.2)
+
+.rouble
+  text-transform uppercase
+
+  &:after
+    content '−'
+
+    display inline-block
+
+    position relative
+    top .18em
+
+    margin-left -.65em
+
+  span
+    display none
+
+.side-menu
+  &__item
+    padding-bottom 1px
+
+    color darken(purple,15%)
+    font-size 16px
+    font-weight 700
+    text-decoration underline
+
+  &__link
+    text-decoration inherit
+
+  &__subitem
+    font-size 13px
+    text-decoration none
+
+  &__item + &__item
+  &__subitem + &__item
+    margin-top 25px
+
+.site-menu
+  margin-bottom -14px
+
+  color darken(green,35%)
+  line-height 28px
+  text-align justify
+
+  &__icon
+    display inline-block
+
+    position relative
+    vertical-align middle
+
+    width 16px
+    height 16px
+    margin-right .3em
+
+    background-position center top
+    background-repeat no-repeat
+    line-height 16px
+
+    &:after
+      content ''
+
+      display inline-block
+
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+
+      background-image inherit
+      background-position center bottom
+      opacity 0
+
+      transition opacity .35s .15s
+
+    &.hover
+    &:hover
+      &:after
+        opacity 1
+
+        transition none
+
+    &_type
+      &_contacts
+        background-image uri('../i/contacts-icon.png')
+
+      &_delivery
+        background-image uri('../i/delivery-icon.png')
+
+      &_news
+        background-image uri('../i/news-icon.png')
+
+      &_payments
+        background-image uri('../i/payments-icon.png')
+
+      &_sizes
+        background-image uri('../i/sizes-icon.png')
+
+  &__item
+    display inline-block
+
+  &__link
+    display inline-block
+
+    vertical-align middle
+
+  &:after
+    content ''
+
+    display inline-block
+
+    width 100%
+
+.ugc
+  font-size 13px
+
+  h1
+    margin-bottom 9px
+
+    font 600 18px/25px 'Open Sans', Helvetica, Arial, sans-serif
+
+  p
+    margin-bottom 1.5em
