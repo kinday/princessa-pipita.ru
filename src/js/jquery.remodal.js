@@ -234,9 +234,9 @@
     };
 
     if ($) {
-        $["fn"][pluginName] = function (opts) {
+        $.fn[pluginName] = function (opts) {
             var instance;
-            this["each"](function (i, e) {
+            this.each(function (i, e) {
                 var $e = $(e);
                 if (!$e.data(pluginName)) {
                     instance = new Remodal($e, opts);
@@ -314,4 +314,4 @@
         }
     };
     $(window).bind("hashchange." + pluginName, hashHandler);
-})(window["jQuery"] || window["Zepto"]);
+})(window.jQuery || window.Zepto);
