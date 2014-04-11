@@ -433,6 +433,9 @@ a
     margin-top 1px
     margin-bottom 10px
 
+  &__pagination
+    margin-bottom 40px
+
   &__popular
     margin 0 -40px
 
@@ -500,6 +503,8 @@ a
 .icon
   display inline-block
 
+  vertical-align middle
+
   &_type
     &_map
       margin-left .5em
@@ -508,12 +513,23 @@ a
       height 16px
 
       background-color rgb(115,114,107)
+      background-image url('../i/map-icon.png')
       background-image uri('../i/map-icon.png')
       background-position center center
 
-      vertical-align middle
-
       transition background-color .35s .15s
+
+    &_back
+      width 12px
+      height 16px
+
+      margin-top -2px
+      margin-right 6px
+
+      background-image url('../i/prev-icon.png')
+      background-image uri('../i/prev-icon.png')
+      background-position center center
+      background-repeat no-repeat
 
 .input
   padding 6px 10px
