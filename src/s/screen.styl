@@ -14,11 +14,15 @@ white = rgb(255,255,235)
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
+// *
+//   outline 1px solid black
+
 html
   position relative
 
   background-color white
-  background-image uri('/i/background.png')
+  background-image url('../i/background.png')
+  background-image uri('../i/background.png')
 
 body
   min-width 1000px
@@ -93,6 +97,8 @@ a
         padding 0 5px 0 4px
 
 .button
+  display inline-block
+
   padding 2px 15px 1px
 
   border-radius 5px
@@ -100,14 +106,25 @@ a
 
   font-size 12px
   text-decoration none
+  vertical-align middle
+  white-space nowrap
 
   &_size
+    &_small
+      padding 2px 15px 1px
+
+      font-size 12px
+
     &_medium
-      padding 10px 15px
+      font-size 14px
+
+    &_big
+      padding 14px 15px 12px
 
       font-size 14px
       font-weight 700
       letter-spacing .05em
+      line-height 14px
       text-transform uppercase
 
   &_type
@@ -195,7 +212,7 @@ a
 
       text-shadow 0 1px 0 rgba(lighten(@background-color,75%),.7)
 
-      transition background-color .35s .15s, box-shadow .35s .15s
+      transition background-color .35s .15s, box-shadow .35s .15s, color .35s .15s
 
       &:hover
         background-color lighten(@background-color,50%)
@@ -221,11 +238,7 @@ a
                  0 2px 1px rgba(darken(@background-color,75%),.25),
            inset 0 1px 3px rgba(darken(@background-color,75%),0)
 
-      font-size 14px
-      font-weight 400
-      letter-spacing 0
       text-shadow 0 1px 0 rgba(lighten(@background-color,75%),.7)
-      text-transform none
 
       transition color .35s .15s, box-shadow .35s .15s
 
@@ -248,6 +261,15 @@ a
 
         color darken(@background-color,80%)
 
+  &.is-dangerous
+    background transparent
+    opacity .65
+
+    color red
+
+    &:hover
+      opacity 1
+
   &_width
     &_wide
       width 100%
@@ -258,6 +280,80 @@ a
   font-weight 700
   letter-spacing .05em
   text-transform uppercase
+
+.cart
+  &__cart-item
+    position relative
+    right -20px
+
+    margin-left -40px
+    margin-bottom 20px
+
+  &__totals
+    margin-bottom 40px
+
+    text-align right
+
+.cart-item
+  padding 10px 20px
+
+  border 1px solid rgba(black,0)
+  border-radius 10px
+
+  transition background-color .15s, border-color .15s
+
+  &:hover
+    background-color rgba(255,255,255,.5)
+
+    border 1px solid rgba(black,.25)
+
+  &__buttons
+  &__calculation
+    text-align right
+
+  &__buttons
+    opacity 0
+
+    transition opacity .15s .05s
+
+  &__calculation
+    margin-bottom 10px
+
+    font-size 18px
+    font-weight 700
+
+  &__math-sign
+  &__price
+  &__subtotal
+    display inline-block
+
+    vertical-align middle
+
+  &__math-sign
+    padding 0 1em
+
+    color rgb(168,143,138)
+
+  &__options
+    margin-bottom 10px
+
+    font-size 13px
+
+  &__subtotal
+    min-width 5em
+
+    color purple
+    text-align right
+
+  &__title
+    margin-bottom 4px
+
+    color purple
+    font-size 18px
+    line-height 25px
+
+  &:hover &__buttons
+    opacity 1
 
 .cart-widget
   padding 14px 15px 15px
@@ -290,12 +386,15 @@ a
         background-repeat no-repeat
 
       &_cart
+        background-image url('../i/cart-icon.png')
         background-image uri('../i/cart-icon.png')
 
       &_faves
+        background-image url('../i/faves-icon.png')
         background-image uri('../i/faves-icon.png')
 
       &_login
+        background-image url('../i/login-icon.png')
         background-image uri('../i/login-icon.png')
 
 .catalog-menu
@@ -398,6 +497,7 @@ a
     height 18px
 
     background-color green
+    background-image url('../i/collapser-icons.png')
     background-image uri('../i/collapser-icons.png')
     background-position center top
     background-repeat no-repeat
@@ -558,11 +658,62 @@ a
       width 100%
       padding 5px 10px 5px 30px
 
-      background-image url('/i/search-icon.png') no-repeat 5px center
+      background-image url('../i/search-icon.png') no-repeat 5px center
       background-image uri('../i/search-icon.png'), linear-gradient(to bottom, rgba(darken(@background-color,95%),.075), rgba(darken(@background-color,25%),0))
       background-position 10px center, center center
       background-repeat no-repeat, repeat
       border-radius 16px
+
+.kinday
+  position absolute
+  right 0
+  bottom 0
+  left 0
+
+  height 110px
+
+  text-align center
+
+  &__mark
+    display block
+
+    width 37px
+    height 45px
+    margin 32px auto
+
+    background-image url('../i/kinday.png')
+    background-image uri('../i/kinday.png')
+    background-position center center
+    background-repeat no-repeat
+
+.linkdump
+  &_type_list &__item
+    background-image url('../i/footer-bullit.gif')
+    background-image uri('../i/footer-bullit.gif')
+    background-position 3px 11px
+    background-repeat no-repeat
+
+  &__title
+    font-size 14px
+    letter-spacing .05em
+    text-transform uppercase
+
+  &__item
+    padding-left 10px
+
+.logotype
+  display inline-block
+
+  width 187px
+  height 77px
+
+  background-image url('../i/logotype.png')
+  background-image uri('../i/logotype.png')
+  background-position center top
+  background-repeat no-repeat
+
+  &:hover
+    background-position center bottom
 
 .merch-card
   &__article
@@ -599,76 +750,6 @@ a
     color purple
     font-size 24px
     line-height 25px
-
-.merchorama
-  .fotorama
-    &__nav
-      &__frame
-        opacity .5
-
-        transition .35s .15s
-
-        &.fotorama__active
-          opacity 1
-
-          transition none
-
-    &__stage
-      border-radius 10px
-
-    &__thumb
-      border-radius 5px
-
-    &__thumb-border
-      display none
-
-.kinday
-  position absolute
-  right 0
-  bottom 0
-  left 0
-
-  height 110px
-
-  text-align center
-
-  &__mark
-    display block
-
-    width 37px
-    height 45px
-    margin 32px auto
-
-    background-image uri('/i/kinday.png')
-    background-position center center
-    background-repeat no-repeat
-
-.linkdump
-  &_type_list &__item
-    background-image uri('/i/footer-bullit.gif')
-    background-position 3px 11px
-    background-repeat no-repeat
-
-  &__title
-    font-size 14px
-    letter-spacing .05em
-    text-transform uppercase
-
-  &__item
-    padding-left 10px
-
-.logotype
-  display inline-block
-
-  width 187px
-  height 77px
-
-  background-image uri('/i/logotype.png')
-  background-position center top
-  background-repeat no-repeat
-
-  &:hover
-    background-position center bottom
 
 .merch-thumb
   display inline-block
@@ -733,6 +814,99 @@ a
 
     transition none
 
+.merchorama
+  .fotorama
+    &__nav
+      &__frame
+        opacity .5
+
+        transition .35s .15s
+
+        &.fotorama__active
+          opacity 1
+
+          transition none
+
+    &__stage
+      border-radius 10px
+
+    &__thumb
+      border-radius 5px
+
+    &__thumb-border
+      display none
+
+.number-input
+  display inline-block
+
+  vertical-align middle
+
+  height 24px
+
+  border-radius 5px
+  box-shadow 0 2px 1px rgba(darken(rgb(255,255,255),75%),.25)
+
+  font-size 0
+  font-weight 400
+
+  &__input
+    vertical-align top
+
+    width 60px
+    height 24px
+    padding 0 5px
+
+    background-color rgb(255,255,255)
+    box-shadow 0 1px 0 rgba(darken(@background-color,60%),.35),
+               0 -1px 0 rgba(darken(@background-color,60%),.35)
+
+    font-size 14px
+    text-align center
+
+  &__minus
+  &__plus
+    position relative
+    z-index 1
+
+    width 24px
+    height 24px
+    background-color rgb(255,255,255)
+    background-image linear-gradient(to bottom, rgba(lighten(@background-color,75%),.5), rgba(darken(@background-color,20%),.25))
+    box-shadow 0 0 0 1px rgba(darken(@background-color,60%),.35),
+         inset 0 1px 3px rgba(darken(@background-color,75%),0)
+    cursor pointer
+
+    font-size 24px
+    font-weight bold
+    text-shadow 0 1px 0 rgba(@background-color,.7)
+
+    transition background-color .35s .15s, box-shadow .35s .15s, color .35s .15s
+
+    &:hover
+      transition none
+
+    &:active
+      background-color darken(@background-color,5%)
+      background-image linear-gradient(to top, rgba(lighten(@background-color,30%),.5), rgba(darken(@background-color,30%),.5))
+      box-shadow 0 0 0 1px rgba(darken(@background-color,60%),.5),
+           inset 0 1px 3px rgba(darken(@background-color,75%),.35)
+
+  &__minus
+    border-radius 5px 0 0 5px
+
+    &:hover
+      background-color lighten(red,90%)
+
+      color red
+
+  &__plus
+    border-radius 0 5px 5px 0
+
+    &:hover
+      background-color lighten(green,90%)
+
+      color green
+
 .options
   color purple
   font-size 13px
@@ -755,6 +929,7 @@ a
       &_desc
         padding-right 18px
 
+        background-image url('../i/sort-icon.gif')
         background-image uri('../i/sort-icon.gif')
         background-repeat no-repeat
 
@@ -764,13 +939,45 @@ a
       &_desc
         background-position right bottom
 
+.pages
+  padding-top 5px
+
+  font-size 0
+  line-height 18px
+  text-align center
+
+  &__item
+    display inline-block
+
+    font-size 18px
+    font-weight 700
+
+    &:not(:first-child)
+      &:before
+        content '·'
+
+        display inline-block
+
+        padding 0 .3em
+
+        color purple
+
+  &__link
+    color purple
+    text-decoration none
+
+.pagination
+  &__next
+    text-align right
+
 .popular
   padding 30px 40px
 
   background-color green
 
   &__show-more
-    background-image uri('/i/show-more__background.png')
+    background-image url('../i/show-more__background.png')
+    background-image uri('../i/show-more__background.png')
     background-position left center
     background-repeat repeat-x
 
@@ -795,7 +1002,8 @@ a
 
       width 39px
 
-      background-image uri('/i/show-more__arrow.png')
+      background-image url('../i/show-more__arrow.png')
+      background-image uri('../i/show-more__arrow.png')
       background-position right center
       background-repeat no-repeat
 
@@ -855,6 +1063,7 @@ a
   height 21px
   margin 0 10px
 
+  background-image url('../i/ratings.png')
   background-image uri('../i/ratings.png')
   background-repeat no-repeat
 
@@ -904,6 +1113,7 @@ a
         padding-left 40px
 
         background-image url('../i/side-menu__item_is_active.png')
+        background-image uri('../i/side-menu__item_is_active.png')
         background-position right center
         background-repeat no-repeat
 
@@ -972,18 +1182,23 @@ a
 
     &_type
       &_contacts
+        background-image url('../i/contacts-icon.png')
         background-image uri('../i/contacts-icon.png')
 
       &_delivery
+        background-image url('../i/delivery-icon.png')
         background-image uri('../i/delivery-icon.png')
 
       &_news
+        background-image url('../i/news-icon.png')
         background-image uri('../i/news-icon.png')
 
       &_payments
+        background-image url('../i/payments-icon.png')
         background-image uri('../i/payments-icon.png')
 
       &_sizes
+        background-image url('../i/sizes-icon.png')
         background-image uri('../i/sizes-icon.png')
 
   &__item
@@ -1001,10 +1216,67 @@ a
 
     width 100%
 
+.submission
+  position relative
+  right -20px
+
+  margin-left -40px
+  padding 20px
+
+  background-color tint(darken(yellow,10%),50%)
+  border-radius 10px
+  box-shadow inset 0 0 0 1px rgba(black,.1),
+             inset 0 1px 2px rgba(black,.25)
+
+.thumb
+  border 3px solid rgb(255,255,255)
+  box-shadow 0 1px 0 rgba(darkgreen,.2)
+
+  transition border-color .35s .15s
+
+  &:hover
+    border-color yellow
+
+    transition none
+
+  &_size
+    &_small
+      width 88px
+
 .title
   color purple
   font-size 48px
   line-height 60px
+
+.totals
+  font-size 24px
+  font-weight 700
+  line-height 25px
+
+  &__result
+    color purple
+
+    font-size 30px
+    line-height 30px
+
+  &__price-name
+  &__price-value
+    display inline-block
+
+    vertical-align middle
+
+    margin-bottom 20px
+
+  &__price-name
+    min-width 100px
+
+    font-size 14px
+    letter-spacing .05em
+    text-align left
+    text-transform uppercase
+
+  &__price-value
+    min-width 200px
 
 .ugc
   font-size 13px

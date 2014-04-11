@@ -18,6 +18,16 @@ html
     link(rel = 'stylesheet', href = '/s/screen.css')
     link(rel = 'stylesheet', href = 'http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.css')
 
+    <!--[if IE]>
+    script(type = 'text/javascript').
+      (function(){
+        var html5elmeents = "article|aside|figure|figcaption|footer|header|nav|section|time".split('|');
+        for(var i = 0; i < html5elmeents.length; i++){
+          document.createElement(html5elmeents[i]);
+          }
+        })();
+    <![endif]-->
+
   body.remodal-bg
     block content
 

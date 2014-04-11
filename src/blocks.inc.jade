@@ -32,7 +32,7 @@ mixin extra-thumbs(title, data)
           +merch-thumb(merch)
       div(elem = 'show-more')
         div(elem = 'show-more__button')
-          button(block = 'button', mod = 'size:medium, type:flat') Показать ещё
+          button(block = 'button', mod = 'size:big, type:flat') Показать ещё
 
 mixin footer()
   footer(block = 'footer')
@@ -112,6 +112,20 @@ mixin merch-thumb(data)
     a(elem = 'price', href != '#' + data.href) #{data.price} руб.
     div(elem = 'preview')
       button(block = 'button', mod = 'size:small, type:main', data-remodal-target = 'merch') Быстрый просмотр
+
+mixin pagination()
+  .row(block = 'pagination')
+    .col1of3.v(elem = 'prev')
+      a(block = 'button', mod = 'size:medium, type:main') ❮ Популярнее
+    .col1of3.v(elem = 'pages')
+      ul(block = 'pages')
+        li(elem = 'item') 1
+        li(elem = 'item'): a(elem = 'link', href = '#') 2
+        li(elem = 'item'): a(elem = 'link', href = '#') 3
+        li(elem = 'item'): a(elem = 'link', href = '#') 4
+        li(elem = 'item'): a(elem = 'link', href = '#') 5
+    .col1of3.v(elem = 'next')
+      a(block = 'button', mod = 'size:medium, type:main') Эксклюзивнее ❯
 
 mixin search()
   input(block = 'input'

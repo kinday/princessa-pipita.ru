@@ -1,0 +1,167 @@
+extends default.layout
+include blocks.inc.jade
+
+block content
+
+  +header()
+
+  div(block = 'content')
+    .row
+      .col1of5
+        div(elem = 'side-menu')
+          +side-menu([{
+            title: 'Кабинет',
+            items: ['Корзина', 'Отложенные товары', 'История заказов', 'Профиль', 'Адресная книга']
+            }])
+
+      .col4of5
+        div(block = 'cart')
+          div(elem = 'cart-item')
+            .row(block = 'cart-item')
+              .col1of7.tight(elem = 'thumb')
+                a(href = '#thumb-1')
+                  img(block = 'thumb', mod = 'size:small', src = '/i/content/merch/thumb-1')
+              .col6of7.tight
+                .row
+                  .col1of2.v(elem = 'info')
+                    a(elem = 'title', href = '#thumb-1') Детское бальное платье
+                  .col1of2.v(elem = 'buttons')
+                    button(block = 'button', mod = 'type:secondary, size:small') Изменить
+                    |  
+                    button.is-dangerous(block = 'button', mod = 'type:secondary, size:small') Удалить
+                ul(elem = 'options')
+                  li Арт. 031-46
+                  li Цвет: бежевый
+                  li Размер: 30...32
+                div(elem = 'calculation')
+                  div(block = 'number-input')
+                    button(elem = 'minus') −
+                    input(elem = 'input', type = 'text')
+                    button(elem = 'plus') +
+                  span(elem = 'math-sign') ×
+                  span(elem = 'price') 2800 руб.
+                  span(elem = 'math-sign') =
+                  span(elem = 'subtotal') 2800 руб.
+
+          div(elem = 'cart-item')
+            .row(block = 'cart-item')
+              .col1of7.tight(elem = 'thumb')
+                a(href = '#thumb-1')
+                  img(block = 'thumb', mod = 'size:small', src = '/i/content/merch/thumb-3')
+              .col6of7.tight
+                .row
+                  .col1of2.v(elem = 'info')
+                    a(elem = 'title', href = '#thumb-1') Детское свадебное платье
+                  .col1of2.v(elem = 'buttons')
+                    button(block = 'button', mod = 'type:secondary, size:small') Изменить
+                    |  
+                    button.is-dangerous(block = 'button', mod = 'type:secondary, size:small') Удалить
+                ul(elem = 'options')
+                  li Арт. 031-46
+                  li Цвет: белый
+                  li Размер: 30...32
+                div(elem = 'calculation')
+                  div(block = 'number-input')
+                    button(elem = 'minus') −
+                    input(elem = 'input', type = 'text')
+                    button(elem = 'plus') +
+                  span(elem = 'math-sign') ×
+                  span(elem = 'price') 3200 руб.
+                  span(elem = 'math-sign') =
+                  span(elem = 'subtotal') 3200 руб.
+
+          div(elem = 'totals')
+            div(block = 'totals', mix = 'block:submission')
+              div
+                span(elem = 'price-name') Скидка
+                span(elem = 'price-value') −420 руб.
+              div(elem = 'result')
+                span(elem = 'price-name') Итого
+                span(elem = 'price-value') −10780 руб.
+              button(block = 'button', mod = 'type:main, size:big') Заказать
+
+    +extra-thumbs('Вы смотрели', [{
+      href: 'thumb-1',
+      price: 2800
+      }, {
+      href: 'thumb-2',
+      price: 3100
+      }, {
+      href: 'thumb-3',
+      price: 2600
+      }, {
+      href: 'thumb-1',
+      price: 3000
+      }, {
+      href: 'thumb-2',
+      price: 2450
+      }])
+
+  +footer()
+
+  div(block = 'kinday')
+    a(elem = 'mark', href = '#')
+
+  div(block = 'remodal', data-remodal-id='merch')
+    .row
+      .col1of2
+        div(block = 'merchorama',
+          data-width = '100%',
+          data-nav = 'thumbs',
+          data-fit = 'cover',
+          data-thumbwidth = '90',
+          data-thumbheight = '90',
+          data-thumbmargin = '10',
+          data-thumbborderwidth = '3',
+          data-click = 'false',
+          data-transition = 'dissolve')
+          img(src = '/i/content/merch/item-1.jpg')
+          img(src = '/i/content/merch/item-2.jpg')
+          img(src = '/i/content/merch/item-3.jpg')
+      .col1of2(block = 'merch-card')
+        h1(elem = 'title') Детское бальное платье
+        h3(elem = 'article')
+          | Арт. 051-36
+          span(elem = 'rating')
+            span(block = 'rating', mod = 'equals:2')
+        div(elem = 'desc')
+          p Модное детское платье в стиле ретро с кринолиновой юбкой средней длины сделает её обладательницу королевой вечера на любом празднике. Особенно платье подходит для Новогоднего бала.
+
+        .row(elem = 'options')
+          .col1of2
+            h6.caption Цвет
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-color-blue', name = 'color')
+              label(elem = 'label', for = 'popup-color-blue') Голубой
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-color-white', name = 'color')
+              label(elem = 'label', for = 'popup-color-white') Белый
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-color-red', name = 'color')
+              label(elem = 'label', for = 'popup-color-red') Красный
+          .col1of2
+            h6.caption Размер
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-size-30-32', name = 'size')
+              label(elem = 'label', for = 'popup-size-30-32') 30...32
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-size-32-34', name = 'size')
+              label(elem = 'label', for = 'popup-size-32-34') 32...34
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-size-36-38', name = 'size', disabled)
+              label(elem = 'label', for = 'popup-size-36-38') 36...38
+            div(block = 'radio')
+              input(elem = 'input', type = 'radio', id = 'popup-size-40-42', name = 'size')
+              label(elem = 'label', for = 'popup-size-40-42') 40...42
+
+        div(elem = 'old-price') 3100 руб.
+        div(elem = 'price') 2600 руб.
+        .row(elem = 'buttons')
+          .col1of2
+            button(block = 'button', mod = 'type:bought, size:medium, width:wide') В корзине
+          .col1of2
+            button(block = 'button', mod = 'type:secondary, size:medium, width:wide') Отложить
+
+        div(elem = 'social')
+          h6.caption Расскажите друзьям
+          div(block = 'social')
